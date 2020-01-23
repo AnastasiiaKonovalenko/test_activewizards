@@ -1,23 +1,48 @@
 import React from 'react';
+import { Switch, Route, NavLink } from 'react-router-dom';
+import Home from './components/home/home';
+import Courses from './components/courses/courses'
+
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <NavLink
+                to="/"
+                className="nav__link"
+              >
+                Home
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                to="/courses"
+                className="nav__link"
+
+              >
+                Courses
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/courses">
+            <Courses
+            />
+          </Route>
+        </Switch>
+      </div>
+    </section>
   );
 }
 
