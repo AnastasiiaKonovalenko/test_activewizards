@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/AnastasiiaKonovalenko/test_activewizards/static/css/main.d07d9a60.chunk.css",
-    "main.js": "/AnastasiiaKonovalenko/test_activewizards/static/js/main.67b9dd78.chunk.js",
-    "main.js.map": "/AnastasiiaKonovalenko/test_activewizards/static/js/main.67b9dd78.chunk.js.map",
-    "runtime-main.js": "/AnastasiiaKonovalenko/test_activewizards/static/js/runtime-main.52e6a696.js",
-    "runtime-main.js.map": "/AnastasiiaKonovalenko/test_activewizards/static/js/runtime-main.52e6a696.js.map",
-    "static/js/2.088d8a07.chunk.js": "/AnastasiiaKonovalenko/test_activewizards/static/js/2.088d8a07.chunk.js",
-    "static/js/2.088d8a07.chunk.js.map": "/AnastasiiaKonovalenko/test_activewizards/static/js/2.088d8a07.chunk.js.map",
-    "index.html": "/AnastasiiaKonovalenko/test_activewizards/index.html",
-    "precache-manifest.ce84560acf13221bb9ec6aa2460600e5.js": "/AnastasiiaKonovalenko/test_activewizards/precache-manifest.ce84560acf13221bb9ec6aa2460600e5.js",
-    "service-worker.js": "/AnastasiiaKonovalenko/test_activewizards/service-worker.js",
-    "static/css/main.d07d9a60.chunk.css.map": "/AnastasiiaKonovalenko/test_activewizards/static/css/main.d07d9a60.chunk.css.map",
-    "static/js/2.088d8a07.chunk.js.LICENSE": "/AnastasiiaKonovalenko/test_activewizards/static/js/2.088d8a07.chunk.js.LICENSE"
+    "main.css": "/test_activewizards/static/css/main.d07d9a60.chunk.css",
+    "main.js": "/test_activewizards/static/js/main.67b9dd78.chunk.js",
+    "main.js.map": "/test_activewizards/static/js/main.67b9dd78.chunk.js.map",
+    "runtime-main.js": "/test_activewizards/static/js/runtime-main.f926776b.js",
+    "runtime-main.js.map": "/test_activewizards/static/js/runtime-main.f926776b.js.map",
+    "static/js/2.088d8a07.chunk.js": "/test_activewizards/static/js/2.088d8a07.chunk.js",
+    "static/js/2.088d8a07.chunk.js.map": "/test_activewizards/static/js/2.088d8a07.chunk.js.map",
+    "index.html": "/test_activewizards/index.html",
+    "precache-manifest.b5932a067f57a89784f5607b4fa65693.js": "/test_activewizards/precache-manifest.b5932a067f57a89784f5607b4fa65693.js",
+    "service-worker.js": "/test_activewizards/service-worker.js",
+    "static/css/main.d07d9a60.chunk.css.map": "/test_activewizards/static/css/main.d07d9a60.chunk.css.map",
+    "static/js/2.088d8a07.chunk.js.LICENSE": "/test_activewizards/static/js/2.088d8a07.chunk.js.LICENSE"
   },
   "entrypoints": [
-    "static/js/runtime-main.52e6a696.js",
+    "static/js/runtime-main.f926776b.js",
     "static/js/2.088d8a07.chunk.js",
     "static/css/main.d07d9a60.chunk.css",
     "static/js/main.67b9dd78.chunk.js"
