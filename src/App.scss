@@ -1,0 +1,16 @@
+.table {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  &__row {
+    display: flex;
+  }
+
+  &__ceil {
+    width: 200px;
+
+    &:nth-child(2) {
+      width: 300px;
+    }
+  }
+}

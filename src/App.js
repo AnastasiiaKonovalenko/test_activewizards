@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { Switch, Route, NavLink } from 'react-router-dom';
 import Home from './components/home/home';
-import Courses from './components/courses/courses'
+import Courses from './components/courses/courses';
+import Students from './components/students/students';
+import { loadData} from './store/actions';
+import { getStudents, getCourses } from './store/selectors';
+import './App.scss';
 
+function App({loadStudentsAndCourses, students, courses }) {
 
-function App() {
+  useEffect( () => {
+    loadStudentsAndCourses();
+  }, []);
 
   return (
     <section>
@@ -24,9 +32,18 @@ function App() {
               <NavLink
                 to="/courses"
                 className="nav__link"
-
+                courses={courses}
               >
                 Courses
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                to="/students"
+                className="nav__link"
+              >
+                Students
               </NavLink>
             </li>
           </ul>
@@ -36,8 +53,16 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
+
           <Route path="/courses">
             <Courses
+              courses={courses}
+            />
+          </Route>
+
+          <Route path="/students">
+            <Students
+              students={students}
             />
           </Route>
         </Switch>
@@ -46,4 +71,15 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps  = state => ({
+  students: getStudents(state),
+  courses: getCourses(state),
+});
+const mapDispatchToProps = ({
+  loadStudentsAndCourses: loadData,
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
