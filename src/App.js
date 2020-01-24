@@ -12,7 +12,7 @@ import './App.scss';
 function App({loadStudentsAndCourses, students, courses }) {
 
   useEffect( () => {
-    loadStudentsAndCourses();
+    localStorage.getItem('reduxState') ? localStorage.getItem('reduxState') : loadStudentsAndCourses();
   }, []);
 
   return (

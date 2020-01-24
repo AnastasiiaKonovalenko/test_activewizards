@@ -10,14 +10,14 @@ import {
   useLocation,
 } from 'react-router-dom';
 import './students.scss';
+import { useLocalStorage } from '../../useLocalStorrage';
 
 const Students = ({students, queryStudent, setQuery, setNewStudent, isActiveForm, setIsActiveForm }) => {
-  const [inputQuery, setInputQuery] = useState('');
-  const [nameValue, setNameValue] = useState('');
-  const [emailValue, setEmailValue] = useState('');
-  const [statusValue, setStatusValue] = useState('');
-  const [courseValue, setCourseValue] = useState('');
-
+  const [inputQue, setInputQue] = useLocalStorage('inputQue', '');
+  const [nameValueStudent, setNameValueStudent] = useLocalStorage('nameValueStudent', '');
+  const [emailValue, setEmailValue] = useLocalStorage('emailValue', '');
+  const [statusValue, setStatusValue] = useLocalStorage('statusValue', '');
+  const [courseValue, setCourseValue] = useLocalStorage('courseValue', '');
   const location = useLocation();
   const history = useHistory();
 
@@ -25,7 +25,7 @@ const Students = ({students, queryStudent, setQuery, setNewStudent, isActiveForm
 
   const handleChangeQuery = (evt) => {
     debouncedSetQuery(evt.target.value);
-    setInputQuery(evt.target.value);
+    setInputQue(evt.target.value);
     searchParams.set('query', evt.target.value.trim().toLowerCase());
     historyPush();
   };
@@ -74,10 +74,10 @@ const Students = ({students, queryStudent, setQuery, setNewStudent, isActiveForm
 
   const handlerFormSubmit = (event) => {
     event.preventDefault();
-    if(!nameValue || !emailValue || !statusValue || !courseValue) {
+    if(!nameValueStudent || !emailValue || !statusValue || !courseValue) {
       return;
     }
-    setNewStudent(nameValue,emailValue,statusValue,courseValue);
+    setNewStudent(nameValueStudent,emailValue,statusValue,courseValue);
   };
 
     return(
@@ -92,7 +92,7 @@ const Students = ({students, queryStudent, setQuery, setNewStudent, isActiveForm
                 className="query__input"
                 placeholder="Search..."
                 type="text"
-                value={inputQuery}
+                value={inputQue}
                 onChange={handleChangeQuery}
               />
             </Col>
@@ -121,8 +121,8 @@ const Students = ({students, queryStudent, setQuery, setNewStudent, isActiveForm
                 <Col>
                   <Form.Control
                     type="text"
-                    onChange={(event) => setNameValue(event.target.value)}
-                    value={nameValue}
+                    onChange={(event) => setNameValueStudent(event.target.value)}
+                    value={nameValueStudent}
                     placeholder="Write Name"
                   />
                 </Col>

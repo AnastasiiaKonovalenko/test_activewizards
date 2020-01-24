@@ -17,11 +17,12 @@ import {
   useLocation,
 } from 'react-router-dom';
 import './courses.scss';
+import { useLocalStorage } from '../../useLocalStorrage';
 
-const Courses = ({ courses, setQuery, queryCourse, setNewCourse, setIsActiveCoursesForm, isActiveFormCourses, setHasErrorCourse, hasErrorCourse}) => {
-  const [inputQuery, setInputQuery] = useState('');
-  const [nameValue, setNameValue] = useState('');
-  const [codeValue, setCodeValue] = useState('');
+const Courses = ({ courses, setQuery, queryCourse, setNewCourse, setIsActiveCoursesForm, isActiveFormCourses }) => {
+  const [inputQuery, setInputQuery] = useLocalStorage('inputQuery','');
+  const [nameValue, setNameValue] = useLocalStorage('nameValue', '');
+  const [codeValue, setCodeValue] = useLocalStorage('codeValue', '');
   const location = useLocation();
   const history = useHistory();
 
@@ -89,7 +90,7 @@ const Courses = ({ courses, setQuery, queryCourse, setNewCourse, setIsActiveCour
     <section className="courses">
       <div className="table">
         <Form
-          className="query"
+          className="query courses__query"
         >
           <Form.Row>
             <Col>
@@ -103,7 +104,7 @@ const Courses = ({ courses, setQuery, queryCourse, setNewCourse, setIsActiveCour
             </Col>
           </Form.Row>
         </Form>
-        <div className="courses__add">
+        <div className="add courses__add">
           {isActiveFormCourses ? (
             <>
               <button
@@ -117,7 +118,7 @@ const Courses = ({ courses, setQuery, queryCourse, setNewCourse, setIsActiveCour
                 </svg>
               </button>
               <Form
-                className="students__form"
+                className="courses__form"
                 onSubmit={handlerFormSubmit}
               >
                 <Form.Row>
@@ -179,7 +180,7 @@ const Courses = ({ courses, setQuery, queryCourse, setNewCourse, setIsActiveCour
             </div>
           </div>
 
-          <CoursesList courses={sortedCourses}/>
+          <CoursesList courses={sortedCourses} />
 
       </div>
     </section>
