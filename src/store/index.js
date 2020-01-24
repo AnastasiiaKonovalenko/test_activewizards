@@ -16,4 +16,14 @@ const rootReducer =  combineReducers({
   isActiveFormCourses: isActiveCoursesFormReducer,
 });
 
-export const store = createStore(rootReducer, applyMiddleware(thunk));
+let initState = {};
+
+const persistedState = localStorage.getItem('reduxState')
+if (persistedState) {
+  initState = JSON.parse(persistedState)
+}
+export const store = createStore(rootReducer,initState, applyMiddleware(thunk));
+
+store.subscribe(() => {
+  localStorage.setItem('reduxState', JSON.stringify(store.getState()))
+});
