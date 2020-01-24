@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import debounce from 'lodash/debounce';
 import { connect } from 'react-redux';
+import { Form, Col } from 'react-bootstrap';
 import CoursesList from '../coursesList/coursesList';
 import {
   getIsActiveCoursesForm,
@@ -15,6 +16,7 @@ import {
   useHistory,
   useLocation,
 } from 'react-router-dom';
+import './courses.scss';
 
 const Courses = ({ courses, setQuery, queryCourse, setNewCourse, setIsActiveCoursesForm, isActiveFormCourses, setHasErrorCourse, hasErrorCourse}) => {
   const [inputQuery, setInputQuery] = useState('');
@@ -84,77 +86,96 @@ const Courses = ({ courses, setQuery, queryCourse, setNewCourse, setIsActiveCour
   };
 
   return (
-    <section>
-      {isActiveFormCourses ? (
-        <>
-          <button
-            onClick={setIsActiveCoursesForm}
-          >
-            formAdd
-          </button>
-          <form
-            onSubmit={handlerFormSubmit}
-          >
-            <label htmlFor="filter">
-              <legend>
-                Course
-              </legend>
-              <input
-                id="filter"
-                type="text"
-                onChange={(event) => setNameValue(event.target.value)}
-                value={nameValue}
-                placeholder="Write here..."
-              />
-            </label>
-
-            <label htmlFor="code">
-              <legend>
-              Code
-              </legend>
-              <input
-                id="code"
-                type="text"
-                onChange={(event) => setCodeValue(event.target.value)}
-                placeholder="Write here..."
-                value={codeValue}
-              />
-            </label>
-            <input
-              type="submit"
-            />
-          </form>
-        </>
-      ) : (
-        <button
-          onClick={setIsActiveCoursesForm}
-        >
-          formAdd
-        </button>
-      )}
-      <input
-        type="text"
-        value={inputQuery}
-        onChange={handleChangeQuery}
-      />
+    <section className="courses">
       <div className="table">
+        <Form
+          className="query"
+        >
+          <Form.Row>
+            <Col>
+              <Form.Control
+                className="query__input"
+                placeholder="Search..."
+                type="text"
+                value={inputQuery}
+                onChange={handleChangeQuery}
+              />
+            </Col>
+          </Form.Row>
+        </Form>
+        <div className="courses__add">
+          {isActiveFormCourses ? (
+            <>
+              <button
+                className="students__activation_form"
+                onClick={setIsActiveCoursesForm}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill-rule="evenodd" clip-rule="evenodd">
+                  <path d="M11.5 0c6.347 0 11.5 5.153 11.5 11.5s-5.153 11.5-11.5 11.5-11.5-5.153-11.5-11.5 5.153-11.5
+              11.5-11.5zm0 1c5.795 0 10.5 4.705 10.5 10.5s-4.705 10.5-10.5 10.5-10.5-4.705-10.5-10.5 4.705-10.5
+              10.5-10.5zm-6.5 10h13v1h-13v-1z"/>
+                </svg>
+              </button>
+              <Form
+                className="students__form"
+                onSubmit={handlerFormSubmit}
+              >
+                <Form.Row>
+                <Col>
+                  <Form.Control
+                    type="text"
+                    onChange={(event) => setNameValue(event.target.value)}
+                    value={nameValue}
+                    placeholder="Write Name"
+                  />
+                </Col>
+
+                <Col>
+                  <Form.Control
+                    type="text"
+                    onChange={(event) => setCodeValue(event.target.value)}
+                    value={codeValue}
+                    placeholder="Write Code"
+                  />
+                </Col>
+                <Col>
+                  <Form.Control
+                    type="submit"
+                  />
+                </Col>
+              </Form.Row>
+            </Form>
+            </>
+          ) : (
+            <button
+              className="students__activation_form students__button"
+              onClick={setIsActiveCoursesForm}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill-rule="evenodd" clip-rule="evenodd">
+                <path d="M11.5 0c6.347 0 11.5 5.153 11.5 11.5s-5.153 11.5-11.5 11.5-11.5-5.153-11.5-11.5 5.153-11.5
+            11.5-11.5zm0 1c5.795 0 10.5 4.705 10.5 10.5s-4.705 10.5-10.5 10.5-10.5-4.705-10.5-10.5 4.705-10.5
+            10.5-10.5zm.5 10h6v1h-6v6h-1v-6h-6v-1h6v-6h1v6z"/>
+              </svg>
+            </button>
+          )}
+        </div>
 
           <div className="table__row">
             <div
-              className="table__ceil"
+              className="table__ceil sort"
               onClick={() => sortCourses('course')}
             >
-              Course
+              COURSE
             </div>
             <div
               className="table__ceil"
             >
-             Code
+             CODE
             </div>
             <div
               className="table__ceil"
             >
-              Action
+              ACTION
             </div>
           </div>
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import Student from '../student/student';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const StudentsList = ({students}) => {
   return(

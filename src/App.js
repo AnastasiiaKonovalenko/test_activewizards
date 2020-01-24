@@ -6,6 +6,7 @@ import Courses from './components/courses/courses';
 import Students from './components/students/students';
 import { loadData} from './store/actions';
 import { getStudents, getCourses } from './store/selectors';
+import { Button } from 'react-bootstrap';
 import './App.scss';
 
 function App({loadStudentsAndCourses, students, courses }) {
@@ -15,40 +16,39 @@ function App({loadStudentsAndCourses, students, courses }) {
   }, []);
 
   return (
-    <section>
-      <div>
-        <nav>
-          <ul>
-            <li>
+    <section className="body">
+        <nav className="nav">
+          <ul className="nav__list">
+            <li className="nav__item">
               <NavLink
                 to="/"
                 className="nav__link"
               >
-                Home
+                <Button variant="light">Home</Button>
               </NavLink>
             </li>
 
-            <li>
+            <li className="nav__item">
               <NavLink
                 to="/courses"
                 className="nav__link"
                 courses={courses}
               >
-                Courses
+                <Button variant="light">Courses</Button>
               </NavLink>
             </li>
 
-            <li>
+            <li className="nav__item">
               <NavLink
                 to="/students"
                 className="nav__link"
               >
-                Students
+                <Button variant="light">Students</Button>
               </NavLink>
             </li>
           </ul>
         </nav>
-
+        <main className="main">
         <Switch>
           <Route exact path="/">
             <Home />
@@ -66,7 +66,7 @@ function App({loadStudentsAndCourses, students, courses }) {
             />
           </Route>
         </Switch>
-      </div>
+        </main>
     </section>
   );
 }
