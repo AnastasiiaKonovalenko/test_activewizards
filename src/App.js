@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Switch, Route, NavLink } from 'react-router-dom';
 import Home from './components/home/home';
@@ -78,6 +79,26 @@ const mapStateToProps  = state => ({
 const mapDispatchToProps = ({
   loadStudentsAndCourses: loadData,
 });
+
+App.propTypes = {
+  loadStudentsAndCourses: PropTypes.func.isRequired,
+  students: PropTypes.arrayOf(PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    index: PropTypes.number,
+    isActive: PropTypes.bool.isRequired,
+    age: PropTypes.number,
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    phone: PropTypes.string,
+    address: PropTypes.string,
+    course__id: PropTypes.string,
+    course: PropTypes.string.isRequired,
+  })).isRequired,
+  courses: PropTypes.arrayOf(PropTypes.shape({
+    course: PropTypes.string.isRequired,
+    course_id: PropTypes.string.isRequired,
+  })).isRequired,
+};
 
 export default connect(
   mapStateToProps,

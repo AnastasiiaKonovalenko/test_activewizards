@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getDeleteCourses } from '../../store/selectors';
 import { deleteCourse } from '../../store/actions';
@@ -30,5 +31,12 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = ({
   handleDeleteCourse: deleteCourse
 });
+
+Course.propTypes = {
+  handleDeleteCourse: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  code: PropTypes.string.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Course);

@@ -1,6 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Button } from 'react-bootstrap';
 import { deleteStudent } from '../../store/actions';
 import { getDeleteStudents } from '../../store/selectors';
 
@@ -39,6 +39,22 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = ({
   deleteStu: deleteStudent,
 });
+
+Student.propTypes = {
+  handleDeleteCourse: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  status: PropTypes.bool,
+  course: PropTypes.string,
+  deleteStu: PropTypes.func,
+};
+
+Student.defaultProps = {
+  status: null,
+  course: null,
+  deleteStu: null,
+};
 
 export default connect(
   mapStateToProps,

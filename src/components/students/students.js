@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Form, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import StudentsList from '../studentsList/StudentsList';
@@ -229,5 +230,33 @@ const mapDispatchToProps = ({
   setNewStudent: addNewStudent,
   setIsActiveForm: toggleForm,
 });
+
+Students.propTypes = {
+  students: PropTypes.arrayOf(PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    index: PropTypes.number,
+    isActive: PropTypes.bool.isRequired,
+    age: PropTypes.number,
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    phone: PropTypes.string,
+    address: PropTypes.string,
+    course__id: PropTypes.string,
+    course: PropTypes.string.isRequired,
+  })).isRequired,
+  queryStudent: PropTypes.string,
+  setQuery: PropTypes.func,
+  setNewStudent: PropTypes.func,
+  isActiveForm: PropTypes.bool,
+  setIsActiveForm: PropTypes.func
+};
+
+Students.defaultProps = {
+  queryStudent: null,
+  setQuery: null,
+  setNewStudent: null,
+  isActiveForm: null,
+  setIsActiveForm: null
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Students);
