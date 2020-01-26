@@ -1,4 +1,4 @@
-export const getStudents = () => fetch('https://api.myjson.com/bins/jxili')
+export const getStudents = () => fetch('https://api.myjson.com/bins/lhxgm')
   .then(response => response.json())
   .catch(() => 'Something wrong');
 

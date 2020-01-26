@@ -1,0 +1,39 @@
+.students {
+
+  &__activation_form {
+    border: none;
+    padding: 0;
+    background-color: transparent;
+  }
+
+  &__form_container {
+    display: flex;
+  }
+
+  &__button {
+    display: block;
+  }
+
+  &__query {
+    margin-bottom: 20px;
+  }
+
+  & .add {
+    width: 981px;
+    margin-bottom: 20px;
+  }
+
+}
+
+.query {
+  width: 400px;
+
+  &__input {
+    outline: none;
+  }
+}
+
+.add {
+  display: flex;
+  justify-content: start;
+}

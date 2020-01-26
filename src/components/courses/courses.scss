@@ -1,0 +1,21 @@
+.courses {
+
+  &__add {
+    width: 720px;
+    margin-bottom: 20px;
+  }
+
+  &__query {
+    margin-bottom: 20px;
+  }
+
+  &__form {
+    width: 696px;
+  }
+}
+
+.add {
+  display: flex;
+  justify-content: start;
+
+}
