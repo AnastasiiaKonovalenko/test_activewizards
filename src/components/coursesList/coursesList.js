@@ -11,7 +11,9 @@ const CoursesList = ({courses}) => {
             name={course.course}
             code={course.course_id.replace(/_/, '')}
             key={course.course_id}
+            id_del={course.key}
             id={course.course_id}
+            isEditing={course.isEditing}
           />
         ))}
     </>

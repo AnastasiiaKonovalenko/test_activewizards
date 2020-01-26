@@ -1,4 +1,12 @@
-import { LOAD_STUDENTS_SUCCESS, DELETE_STUDENT, ADD_NEW_STUDENT } from './actions';
+import {
+  LOAD_STUDENTS_SUCCESS,
+  DELETE_STUDENT,
+  ADD_NEW_STUDENT,
+  CHANGE_STUDENT,
+  CHANGE_STATUS_STUDENT,
+  CLICK_BUTTON_EDIT,
+  CLICK_OUTSIDE_STUDENT,
+} from './actions';
 
 export const studentsReducer = (students = '', action) => {
   switch (action.type) {
@@ -19,6 +27,15 @@ export const studentsReducer = (students = '', action) => {
         },
         ...students,
       ];
+
+    case CHANGE_STUDENT:
+      return action.students;
+
+    case CHANGE_STATUS_STUDENT:
+      return action.students;
+
+    case CLICK_BUTTON_EDIT:
+      return action.students;
 
     default:
       return students;

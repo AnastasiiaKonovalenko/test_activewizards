@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Student from '../student/student';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const StudentsList = ({students}) => {
+const StudentsList = ({students,  setChangeStudent}) => {
   return(
     <>
       {
@@ -14,7 +14,9 @@ const StudentsList = ({students}) => {
             status={student.isActive}
             course={student.course}
             id={student._id}
+            isEditing={student.isEditing}
             key={student._id}
+            students={students}
           />
         ))}
     </>

@@ -11,6 +11,56 @@ export const ADD_NEW_STUDENT = 'ADD_NEW_STUDENT';
 export const ADD_NEW_COURSE = 'ADD_NEW_COURSE';
 export const FORM_IS_ACTIVE = 'FORM_IS_ACTIVE';
 export const FORM_COURSES_IS_ACTIVE = 'FORM_COURSES_IS_ACTIVE';
+export const CHANGE_STUDENT = 'CHANGE_STUDENT';
+export const CHANGE_STATUS_STUDENT = 'CHANGE_STATUS_STUDENT';
+export const CLICK_BUTTON_EDIT = 'CLICK_BUTTON_EDIT';
+export const CLICK_OUTSIDE_STUDENT = 'CLICK_OUTSIDE_STUDENT';
+export const CLICK_BUTTON_EDIT_COURSE = 'CLICK_BUTTON_EDIT_COURSE';
+export const CHANGE_COURSE = 'CHANGE_COURSE';
+
+export const changeStudent = (students, id, key, editName) => ({
+  type: CHANGE_STUDENT,
+  students: students.map(student => student._id !==id ? student : ({
+    ...student,
+    [key]: editName,
+  }))
+});
+
+export const changeStatusStudent = (students, id, editStatus) => ({
+  type: CHANGE_STATUS_STUDENT,
+  students: students.map(student => student._id !==id ? student : ({
+    ...student,
+    isActive: editStatus,
+  }))
+});
+
+export const isEditingStudents = (students, id, edit) => ({
+  type: CLICK_BUTTON_EDIT,
+  students: students.map(student => student._id !== id ? student : ({
+    ...student,
+    isEditing: edit,
+  }))
+});
+
+export const changeCourse = (courses, id, key, editName) => ({
+  type: CHANGE_COURSE,
+  courses: courses.map(course => course.course_id !==id ? course : ({
+    ...course,
+    [key]: editName,
+  }))
+});
+
+export const isEditingCourse = (courses, id, edit) => ({
+  type: CLICK_BUTTON_EDIT_COURSE,
+  courses: courses.map(course => course.course_id !== id ? course : ({
+    ...course,
+    isEditing: edit,
+  }))
+});
+
+export const clickOutsideStudent = (id) => ({
+  type: CLICK_OUTSIDE_STUDENT, id
+  });
 
 const loadStudentsSuccess = students => ({
   type: LOAD_STUDENTS_SUCCESS, students,
@@ -71,8 +121,14 @@ export const loadData = () => async (dispatch) => {
     {
       ...student,
       course: coursesFromServer.find(course => course.course_id === student.course__id).course,
-      name: `${student.name.first} ${student.name.last} `
+      name: `${student.name.first} ${student.name.last} `,
+      isEditing: false,
     }))));
 
-  dispatch(loadCoursesSuccess(coursesFromServer));
+  dispatch(loadCoursesSuccess(coursesFromServer.map(course => (
+    {
+      ...course,
+      key: Math.random().toString(36).substr(2, 9),
+      isEditing: false,
+    }))));
 };

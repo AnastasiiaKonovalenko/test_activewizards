@@ -13,7 +13,8 @@ import {
 import './students.scss';
 import { useLocalStorage } from '../../useLocalStorrage';
 
-const Students = ({students, queryStudent, setQuery, setNewStudent, isActiveForm, setIsActiveForm }) => {
+const Students
+  = ({students, queryStudent, setQuery, setNewStudent, isActiveForm, setIsActiveForm, setChangeStudent }) => {
   const [inputQue, setInputQue] = useLocalStorage('inputQue', '');
   const [nameValueStudent, setNameValueStudent] = useLocalStorage('nameValueStudent', '');
   const [emailValue, setEmailValue] = useLocalStorage('emailValue', '');
@@ -183,12 +184,14 @@ const Students = ({students, queryStudent, setQuery, setNewStudent, isActiveForm
             onClick={() => sortStudents('name')}
             className="table__ceil sort"
           >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 17.01V10h-2v7.01h-3L15 21l4-3.99h-3zM9 3L5 6.99h3V14h2V6.99h3L9 3z"/></svg>
             NAME
           </div>
           <div
             onClick={() => sortStudents('email')}
             className="table__ceil sort"
           >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 17.01V10h-2v7.01h-3L15 21l4-3.99h-3zM9 3L5 6.99h3V14h2V6.99h3L9 3z"/></svg>
             EMAIL
           </div>
           <div
@@ -201,6 +204,7 @@ const Students = ({students, queryStudent, setQuery, setNewStudent, isActiveForm
             onClick={() => sortStudents('course')}
             className="table__ceil sort"
           >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 17.01V10h-2v7.01h-3L15 21l4-3.99h-3zM9 3L5 6.99h3V14h2V6.99h3L9 3z"/></svg>
             COURSE
           </div>
           <div
@@ -211,6 +215,7 @@ const Students = ({students, queryStudent, setQuery, setNewStudent, isActiveForm
         </div>
 
         <StudentsList
+          setChangeStudent={ setChangeStudent}
           students={sortedStudents}
         />
 
@@ -225,6 +230,7 @@ const mapStateToProps = state => ({
   isActiveForm: getIsActiveForm(state),
 });
 
+var changeStudent;
 const mapDispatchToProps = ({
   setQuery: changeQueryStudent,
   setNewStudent: addNewStudent,
