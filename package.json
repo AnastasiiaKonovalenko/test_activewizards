@@ -55,7 +55,7 @@
     "gh-pages": "^2.2.0",
     "gulp": "^4.0.2",
     "gulp-header": "^2.0.9",
-    "stylelint": "^13.0.0",
+    "stylelint": "^15.10.1",
     "stylelint-config-standard": "^19.0.0"
   }
 }
